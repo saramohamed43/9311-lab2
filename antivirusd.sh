@@ -9,7 +9,8 @@ dir=$1
 malicious_dir=$2
 interval_secs=$3
 
-for file in "$dir"/*
+check_files() {
+    for file in "$dir"/*
     do
         if [ -f "$file" ]
         then
@@ -24,7 +25,18 @@ for file in "$dir"/*
                 cp "$file" "$malicious_dir"
                 rm "$file"
             fi
-        else
-            continue
         fi
 done
+}
+
+while true
+do
+ls -l "$dir" > directory-info.new
+if [ ! -f directory-info.last ] || ! cmp -s directory-info.last directory-info.new
+then 
+    check_files
+    cp directory-info.new directory-info.last
+fi
+sleep "$interval_secs"
+done 
+
