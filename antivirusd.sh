@@ -8,3 +8,13 @@ fi
 dir=$1
 malicious_dir=$2
 interval_secs=$3
+
+for file in "$dir"/*
+    do
+        if [ -f "$file" ]
+        then
+            echo "File name: $file"
+        else
+            echo "Empty directory"
+        fi
+done
