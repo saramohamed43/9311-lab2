@@ -13,8 +13,18 @@ for file in "$dir"/*
     do
         if [ -f "$file" ]
         then
-            echo "File name: $file"
+            if echo "$file" | grep -q -E "\.exe$|\.bat$|\.vbs$|\.scr$|\.ps1$"
+            then
+            echo "$(basename "$file") is malicious and it is DELETED"
+            cp "$file" "$malicious_dir"
+            rm "$file"
+            elif  grep -q -E -i "virus|trojan|malware|worm|ransomware" "$file"
+            then
+                echo "$(basename "$file") is malicious and it is DELETED"
+                cp "$file" "$malicious_dir"
+                rm "$file"
+            fi
         else
-            echo "Empty directory"
+            continue
         fi
 done
