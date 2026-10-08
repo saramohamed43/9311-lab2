@@ -35,7 +35,7 @@ ls -l "$dir" > directory-info.new
 if [ ! -f directory-info.last ] || ! cmp -s directory-info.last directory-info.new
 then 
     check_files
-    cp directory-info.new directory-info.last
+    ls -l "$dir" > directory-info.last
 fi
 sleep "$interval_secs"
 done 
