@@ -28,9 +28,10 @@ do
     if [ "$choice" -ge 1 ] && [ "$choice" -le `expr $i - 1` ]
     then
     selected_file=$(ls "$malicious_dir" | head -n "$choice" | tail -n 1)
-    read -p "• Input 1: Restore this file back into dir (it was a false positive)
-            • Input 2: Permanently delete this file from malicious_dir (it was genuinely malicious)
-            • Input 3: Leave this file as-is and go back to the list" input
+    echo "• Input 1: Restore this file back into dir (it was a false positive)"
+    echo "• Input 2: Permanently delete this file from malicious_dir (it was genuinely malicious)"
+    echo "• Input 3: Leave this file as-is and go back to the list"
+    read -p "answer: " input
     if [ "$input" -eq 1 ]
     then 
     cp "$malicious_dir/$selected_file" "$dir"
