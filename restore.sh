@@ -7,6 +7,7 @@ fi
 
 dir=$1
 malicious_dir=$2
+whitelist=whitelist.txt
 
 while true 
 do 
@@ -39,6 +40,7 @@ do
     then 
     cp "$malicious_dir/$selected_file" "$dir"
     rm "$malicious_dir/$selected_file"
+    echo "$(basename "$selected_file")" >> "$whitelist"
     echo "Restored $selected_file to $dir."
     elif [ "$input" -eq 2 ]
     then
