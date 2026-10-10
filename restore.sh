@@ -12,11 +12,14 @@ whitelist=whitelist.txt
 while true 
 do 
     i=1
-    echo "Choose a file:"
     for file in "$malicious_dir"/*
     do
     if [ -f "$file" ]
     then
+        if [ $i -eq 1 ]
+        then 
+            echo "Choose a file:"
+        fi
         echo "$i: $(basename "$file")"
         i=`expr $i + 1`
     else 
