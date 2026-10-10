@@ -20,7 +20,7 @@ This project is a small antivirus written as shell scripts.
 9311-lab2/
 ├── antivirusd.sh        # the daemon: watches a folder and quarantines bad files
 ├── restore.sh           # review quarantined files: restore or delete them
-├── antivirus-cron.sh    # Bonus 1: one scan per run, meant to be run by 
+├── antivirus-cron.sh    # Bonus 1: one scan per run, meant to be run by cron 
 ├── Makefile             # shortcuts: make, make restore
 ├── .gitignore           # ignores the files created while running
 └── README.md            # this file
